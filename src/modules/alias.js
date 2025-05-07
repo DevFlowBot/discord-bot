@@ -3,6 +3,6 @@ const alias = require('module-alias');
 
 const srcPath = path.resolve('src');
 
-alias.addAlias('@lumia', srcPath);
+alias.addAlias('@common', srcPath);
 
 module.exports = alias;

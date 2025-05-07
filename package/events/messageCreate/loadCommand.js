@@ -1,16 +1,5 @@
-const { Guild, User } = require('../../schemas');
-
 module.exports = async (client, message) => {
-  const { apolloClient } = client;
-
-  const { data } = await apolloClient.query({
-    query: Guild,
-    variables: {
-      id: message.guild.id
-    }
-  });
-  const { guild } = data;
-  const prefix = guild.prefix || '.';
+  const prefix =  '.';
 
   if(!message.content.startsWith(prefix) || message.author.bot) return;
   
@@ -20,13 +9,6 @@ module.exports = async (client, message) => {
   const command = client.commands.get(commandName);
   
   if (!command) return;
-  
-  await apolloClient.query({
-    query: User,
-    variables: {
-      id: message.author.id
-    }
-  });
 
   try {
     command.execute(client, message, args);
