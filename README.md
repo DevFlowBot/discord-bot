@@ -1,54 +1,55 @@
-# Lumia Discord
+# 🤖 DevFlowBot
 
-Descrição breve do projeto.
+Bot Discord modular com suporte a internacionalização, comandos dinâmicos e integração com banco de dados PostgreSQL.
 
-## Tecnologias
+---
 
-- Discord.js: ^14.11.0
-- Dotenv: ^16.3.1
-- Glob: ^10.3.1
-- i18next: ^23.2.6
-- Module-alias: ^2.2.3
-- Mongoose: ^7.3.1
+## 📁 Estrutura de Diretórios
 
-## Diretórios
+### `src/`
 
-### src/client
+Contém as configurações principais e a estrutura do bot, incluindo integração com o Discord e o banco de dados:
 
-Este diretório contém o código relacionado ao cliente Discord.
+- **`_partials/`**: Funções auxiliares para carregar dinamicamente handlers e módulos:
+  - **`index.js`**: Contém funções como `loadHandlers` (para carregar arquivos de manipuladores de eventos e comandos) e `loadModules` (para carregar módulos auxiliares).
+- **`client/`**: Configurações do cliente Discord (exemplo: inicialização do bot, configuração de banco de dados e internacionalização).
+- **`handlers/`**: Manipuladores de comandos, eventos e interações do bot.
+- **`locales/`**: Arquivos de tradução para diferentes idiomas.
+- **`schemas/`**: Definições e configurações do banco de dados (migrations, seeds, etc.).
 
-- Alias: Arquivo `alias.js` contendo a configuração do módulo-alias.
-- Database: Arquivo `database.js` para a conexão com o banco de dados MongoDB.
-- i18n: Arquivo `i18n.js` para a configuração de internacionalização (i18n).
-- Index: Arquivo `index.js` que inicia o cliente Discord.
+### `package/`
 
-### src/handlers
+Contém os comandos, eventos e funções auxiliares específicos para o funcionamento do bot:
 
-Este diretório contém os manipuladores (handlers) para comandos e eventos.
+- **`commands/`**: Comandos do bot, divididos em dois tipos:
+  - **`prefix/`**: Comandos acionados por prefixo.
+  - **`slash/`**: Comandos do tipo slash (interações com barra).
+- **`events/`**: Eventos do bot, como interações com o Discord (exemplo: login, mensagem recebida, etc.).
+- **`_partials/`**: Funções auxiliares e utilitários internos usados para modularizar o código.
 
-- Commands: Arquivo `commands.js` contendo os manipuladores de comandos.
-- Events: Arquivo `events.js` contendo os manipuladores de eventos.
-- Slashs: Arquivo `slashs.js` contendo os manipuladores de comandos rápidos.
+---
 
-### src/locales
+## 🛠️ Banco de Dados
 
-Este diretório contém as traduções para diferentes idiomas.
+O projeto utiliza **PostgreSQL** como banco de dados relacional, com **Knex.js** como query builder.
 
-- en: Arquivo `en.js` contendo as traduções para o idioma inglês.
-- br: Arquivo `br.js` contendo as traduções para o idioma português brasileiro.
+Para visualizar e gerenciar seus dados com uma interface gráfica amigável, recomenda-se o uso do **[Beekeeper Studio](https://www.beekeeperstudio.io/)** — uma ferramenta leve e open-source para gerenciar bancos SQL.
 
-### src/schemas
+---
 
-Este diretório contém os schemas para o Mongoose.
+## ▶️ Como Executar o Projeto
 
-- Schemas: Diretório contendo os schemas para o Mongoose.
+1. Instale as dependências:
+   ```bash
+   yarn install
+   ```
 
-### src/package
+2. Rode as migrations:
+   ```bash
+   yarn db:prepare
+   ```
 
-Este diretório contém os comandos, eventos e funções relacionados ao pacote.
-
-## Como Executar
-
-1. Certifique-se de ter as dependências instaladas corretamente executando o comando `npm install`.
-2. Configure as variáveis de ambiente no arquivo `.env`.
-3. Execute o projeto com o comando `npm run dev`.
+ 3. Inicialize o projeto:
+     ```bash
+     yarn dev
+     ```
