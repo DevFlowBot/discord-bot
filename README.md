@@ -39,17 +39,21 @@ Para visualizar e gerenciar seus dados com uma interface gráfica amigável, rec
 
 ## ▶️ Como Executar o Projeto
 
-1. Instale as dependências:
+### 1. Configure o arquivo `.env`:
+
+ - O projeto já inclui um arquivo `.env copy`. Renomeie este arquivo para `.env` e edite-o conforme necessário para configurar as variáveis de ambiente.
+
+### 2. Instale as dependências:
    ```bash
    yarn install
    ```
 
-2. Rode as migrations:
+### 3. Rode as migrations:
    ```bash
    yarn db:prepare
    ```
 
- 3. Inicialize o projeto:
-     ```bash
-     yarn dev
-     ```
+ ### 4. Inicialize o projeto:
+  ```bash
+  yarn dev
+   ```
