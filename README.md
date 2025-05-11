@@ -4,14 +4,6 @@ Bot Discord modular com suporte a internacionalização, comandos dinâmicos e i
 
 ---
 
-## 🛠️ Banco de Dados
-
-O projeto utiliza **PostgreSQL** como banco de dados relacional, com **Knex.js** como query builder.
-
-Para visualizar e gerenciar seus dados com uma interface gráfica amigável, recomenda-se o uso do **[Beekeeper Studio](https://www.beekeeperstudio.io/)** — uma ferramenta leve e open-source para gerenciar bancos SQL.
-
----
-
 ## ▶️ Como Executar o Projeto
 
 ### 1. Configure o arquivo `.env`:
