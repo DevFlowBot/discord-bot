@@ -1,2 +1,2 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+# Verifica o lint e prettier dos arquivos
+lint-staged
