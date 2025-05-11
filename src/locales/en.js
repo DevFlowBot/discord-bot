@@ -4,17 +4,20 @@ module.exports = {
   ping: '🏓 My ping: {{ping}}!',
   setlang: {
     title: 'Hello {{username}}, select a language for yourself',
-    description: 'Your current language is: **{{userLang}}**\nDefault language: **{{langDefault}}**',
+    description:
+      'Your current language is: **{{userLang}}**\nDefault language: **{{langDefault}}**',
     successChange: 'Language changed to {{setedLang}}!',
     expiredTime: 'Your time to select the language has expired!',
   },
   setPrefix: {
-    permission: 'You don\'t have permission to change my prefix to Administrator',
+    permission:
+      "You don't have permission to change my prefix to Administrator",
     required: 'Give me a prefix',
     success: 'Prefix changed to: `{{prefix}}`',
-    error: 'Error changing prefix!'
+    error: 'Error changing prefix!',
   },
   mentionPrefix: {
-    index: '<:lumia:1129194383867133972> My prefix on this guild is: `{{prefix}}`'
-  }
+    index:
+      '<:lumia:1129194383867133972> My prefix on this guild is: `{{prefix}}`',
+  },
 };

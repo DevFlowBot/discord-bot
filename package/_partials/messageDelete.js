@@ -1,4 +1,3 @@
-
 function messageDelete(message, time) {
   setTimeout(async () => {
     try {

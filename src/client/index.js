@@ -8,7 +8,7 @@ const configureAtributes = require('./atributes');
 const token = process.env.TOKEN;
 
 const intents = [
-  GatewayIntentBits.Guilds, 
+  GatewayIntentBits.Guilds,
   GatewayIntentBits.GuildMembers,
   GatewayIntentBits.AutoModerationConfiguration,
   GatewayIntentBits.AutoModerationExecution,
@@ -22,7 +22,7 @@ const intents = [
   GatewayIntentBits.GuildModeration,
   GatewayIntentBits.GuildWebhooks,
   GatewayIntentBits.MessageContent,
-  GatewayIntentBits.GuildPresences
+  GatewayIntentBits.GuildPresences,
 ];
 
 const client = new Client({ intents });

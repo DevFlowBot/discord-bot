@@ -1,16 +1,13 @@
 {
-  "globals": {
-    "process": "readonly"
-  },
   "env": {
     "browser": true,
     "node": true,
     "es2021": true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:prettier/recommended"
-  ],
+  "globals": {
+    "process": "readonly"
+  },
+  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
@@ -20,7 +17,10 @@
     "no-console": "warn", // Aviso ao usar console.log ou outros métodos de console
     "no-unused-vars": "warn", // Aviso sobre variáveis não utilizadas
     "no-undef": "error", // Impede o uso de variáveis não definidas
-    "no-magic-numbers": ["warn", { "ignoreArrayIndexes": true, "ignore": [0, 1] }], // Evita números mágicos no código
+    "no-magic-numbers": [
+      "warn",
+      { "ignoreArrayIndexes": true, "ignore": [0, 1] }
+    ], // Evita números mágicos no código
     "consistent-return": "error", // Exige que as funções sempre tenham um retorno consistente
     "eqeqeq": ["warn", "always"], // Exige o uso de === e !== em vez de == e !=
     "curly": ["error", "all"], // Exige o uso de chaves em estruturas de controle (if, for, etc.)

@@ -3,5 +3,5 @@ const en = require('./en');
 
 module.exports = {
   br,
-  en
+  en,
 };

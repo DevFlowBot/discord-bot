@@ -4,8 +4,8 @@ const { br, en } = require('../locales/index');
 
 i18next.init({
   resources: {
-    en: {translation: en},
-    br: {translation: br},
+    en: { translation: en },
+    br: { translation: br },
   },
   lng: 'br',
   fallbackLng: 'br',

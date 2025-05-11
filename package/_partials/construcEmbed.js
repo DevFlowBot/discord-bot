@@ -1,7 +1,6 @@
 const { EmbedBuilder } = require('discord.js');
 
 function constructToEmbed(dataArray) {
-
   const embeds = [];
 
   for (const data of dataArray) {
@@ -17,19 +16,19 @@ function constructToEmbed(dataArray) {
     }
 
     if (user) {
-      embed.setThumbnail(user.displayAvatarURL({ format: 'png', dynamic: true, size: 4096 }));
+      embed.setThumbnail(
+        user.displayAvatarURL({ format: 'png', dynamic: true, size: 4096 })
+      );
     }
 
     if (footer) {
-      embed.setFooter({ text: footer});
+      embed.setFooter({ text: footer });
     }
-
 
     for (const field of fields) {
       const { name, value, inline } = field;
       embed.addFields({ name, value, inline });
     }
-
 
     embeds.push(embed);
   }

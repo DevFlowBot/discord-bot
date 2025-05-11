@@ -1,7 +1,6 @@
 const { StringSelectMenuBuilder } = require('discord.js');
 
 function constructToSelectMenu(menus) {
-
   const selectsMenus = [];
 
   for (const itens of menus) {

@@ -1,13 +1,13 @@
 module.exports = async (client, message) => {
-  const prefix =  '.';
+  const prefix = '.';
 
-  if(!message.content.startsWith(prefix) || message.author.bot) return;
-  
+  if (!message.content.startsWith(prefix) || message.author.bot) return;
+
   const args = message.content.slice(prefix.length).trim().split(/ +/);
   const commandName = args.shift().toLowerCase();
-  
+
   const command = client.commands.get(commandName);
-  
+
   if (!command) return;
 
   try {

@@ -6,30 +6,27 @@ require('dotenv').config();
 const token = process.env.TOKEN;
 
 module.exports = async (client) => {
-
   const slashCommands = [];
   const slashCommandsFiles = await glob('package/commands/slash/**/*.js');
 
-  for (const file of slashCommandsFiles)  {
+  for (const file of slashCommandsFiles) {
     const command = require(`../../../${file}`);
     if ('data' in command && 'execute' in command) {
       slashCommands.push(command.data.toJSON());
     } else {
-      console.log(`[WARNING] The command at ${file} is missing a required "data" or "execute" property.`);
+      console.error(
+        `[WARNING] The command at ${file} is missing a required "data" or "execute" property.`
+      );
     }
   }
 
   const rest = new REST().setToken(token);
-  
+
   try {
-    await rest.put(
-      Routes.applicationCommands(client.user.id),
-      { body: slashCommands }
-    );
-  
-    console.log('Successfully reloaded application (/) commands.');
+    await rest.put(Routes.applicationCommands(client.user.id), {
+      body: slashCommands,
+    });
   } catch (error) {
-    
     console.error(error);
   }
 };
