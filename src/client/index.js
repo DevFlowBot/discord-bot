@@ -3,32 +3,41 @@ require('dotenv').config();
 
 const { loadHandlers, loadModules } = require('../_partials');
 const configureAtributes = require('./atributes');
+const checkAllConnections = require('../startup');
 
 // eslint-disable-next-line no-undef
 const token = process.env.TOKEN;
 
-const intents = [
-  GatewayIntentBits.Guilds,
-  GatewayIntentBits.GuildMembers,
-  GatewayIntentBits.AutoModerationConfiguration,
-  GatewayIntentBits.AutoModerationExecution,
-  GatewayIntentBits.DirectMessageReactions,
-  GatewayIntentBits.DirectMessages,
-  GatewayIntentBits.GuildIntegrations,
-  GatewayIntentBits.GuildMessageTyping,
-  GatewayIntentBits.GuildMessageReactions,
-  GatewayIntentBits.GuildMessages,
-  GatewayIntentBits.GuildVoiceStates,
-  GatewayIntentBits.GuildModeration,
-  GatewayIntentBits.GuildWebhooks,
-  GatewayIntentBits.MessageContent,
-  GatewayIntentBits.GuildPresences,
-];
+const startClient = async () => {
+  await checkAllConnections();
 
-const client = new Client({ intents });
+  const intents = [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMembers,
+    GatewayIntentBits.AutoModerationConfiguration,
+    GatewayIntentBits.AutoModerationExecution,
+    GatewayIntentBits.DirectMessageReactions,
+    GatewayIntentBits.DirectMessages,
+    GatewayIntentBits.GuildIntegrations,
+    GatewayIntentBits.GuildMessageTyping,
+    GatewayIntentBits.GuildMessageReactions,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.GuildVoiceStates,
+    GatewayIntentBits.GuildModeration,
+    GatewayIntentBits.GuildWebhooks,
+    GatewayIntentBits.MessageContent,
+    GatewayIntentBits.GuildPresences,
+  ];
 
-loadHandlers(client);
-loadModules();
-configureAtributes(client);
+  const client = new Client({ intents });
 
-client.login(token);
+  loadHandlers(client);
+  loadModules();
+  configureAtributes(client);
+
+  client.login(token).catch((err) => {
+    console.error('Erro ao logar no cliente Discord:', err);
+  });
+};
+
+startClient();

@@ -4,25 +4,43 @@
   "description": "Integração discord",
   "main": "src/client/index.js",
   "scripts": {
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "prettier": "prettier --write .",
-    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix && prettier --write .",
-    "format": "npm-run-all --parallel lint prettier",
+    "prettier:check": "prettier --check .",
+    "prettier:fix": "prettier --write .",
+    "test": "node test/index.js",
+    "lint:check": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "format:check": "npm-run-all lint:check prettier:check",
+    "format": "npm-run-all lint:fix prettier:fix",
     "dev": "nodemon",
-    "gitmoji": "gitmoji -c"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "prepare": "husky install",
+    "check-before-commit": "lint-staged && yarn test",
+    "commit": "node src/scripts/check-staged.js && yarn check-before-commit && gitmoji -c",
+    "lint-staged": "lint-staged"
   },
   "lint-staged": {
-    "*.js": "eslint --fix"
+    "*.js": [
+      "eslint --fix",
+      "prettier --check"
+    ],
+    "*.jsx": [
+      "eslint --fix",
+      "prettier --check"
+    ],
+    "*.ts": [
+      "eslint --fix",
+      "prettier --check"
+    ],
+    "*.tsx": [
+      "eslint --fix",
+      "prettier --check"
+    ]
   },
   "author": "",
   "license": "UNLICENSED",
   "dependencies": {
     "@apollo/client": "^3.7.17",
+    "boxen": "5.1.2",
+    "chalk": "4",
     "discord.js": "^14.11.0",
     "dotenv": "^16.5.0",
     "glob": "^10.3.1",
@@ -32,6 +50,7 @@
     "module-alias": "^2.2.3",
     "moment": "^2.29.4",
     "mongoose": "^7.3.1",
+    "ora": "5",
     "pg": "^8.15.6"
   },
   "devDependencies": {
