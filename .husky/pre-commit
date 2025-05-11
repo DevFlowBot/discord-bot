@@ -1,11 +1,2 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
-
-# Verifica se há arquivos staged
-if [ -z "$(git diff --cached --name-only)" ]; then
-  echo "⚠️  Nenhum arquivo staged. Pulando pre-commit."
-  exit 0
-fi
-
-# Executa os scripts normalmente
-yarn check-before-commit
