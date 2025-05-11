@@ -4,7 +4,9 @@ require('dotenv').config();
 const { loadHandlers, loadModules } = require('../_partials');
 const configureAtributes = require('./atributes');
 
+// eslint-disable-next-line no-undef
 const token = process.env.TOKEN;
+
 const intents = [
   GatewayIntentBits.Guilds, 
   GatewayIntentBits.GuildMembers,
@@ -12,7 +14,6 @@ const intents = [
   GatewayIntentBits.AutoModerationExecution,
   GatewayIntentBits.DirectMessageReactions,
   GatewayIntentBits.DirectMessages,
-  GatewayIntentBits.GuildEmojisAndStickers,
   GatewayIntentBits.GuildIntegrations,
   GatewayIntentBits.GuildMessageTyping,
   GatewayIntentBits.GuildMessageReactions,

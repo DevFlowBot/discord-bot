@@ -1,0 +1,39 @@
+{
+  "globals": {
+    "process": "readonly"
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    // Regras recomendadas para CommonJS
+    "no-console": "warn", // Aviso ao usar console.log ou outros métodos de console
+    "no-unused-vars": "warn", // Aviso sobre variáveis não utilizadas
+    "no-undef": "error", // Impede o uso de variáveis não definidas
+    "no-magic-numbers": ["warn", { "ignoreArrayIndexes": true, "ignore": [0, 1] }], // Evita números mágicos no código
+    "consistent-return": "error", // Exige que as funções sempre tenham um retorno consistente
+    "eqeqeq": ["warn", "always"], // Exige o uso de === e !== em vez de == e !=
+    "curly": ["error", "all"], // Exige o uso de chaves em estruturas de controle (if, for, etc.)
+    "quotes": ["error", "single"], // Exige o uso de aspas simples para strings
+    "semi": ["error", "always"], // Exige o uso de ponto e vírgula no final das declarações
+    "no-trailing-spaces": "error", // Impede espaços em branco no final das linhas
+    "no-multiple-empty-lines": ["error", { "max": 1 }], // Limita a quantidade de linhas em branco consecutivas
+    "indent": ["error", 2], // Define a indentação para 2 espaços
+    "max-len": ["warn", { "code": 80 }], // Limita o comprimento máximo das linhas para 80 caracteres
+    "camelcase": "error", // Exige o uso de camelCase para variáveis e funções
+    "no-restricted-globals": ["error", "event", "fdescribe"], // Impede o uso de variáveis globais restritas
+    "prefer-const": "warn", // Recomenda o uso de const ao invés de let quando a variável não é reatribuída
+    "arrow-body-style": ["error", "as-needed"], // Exige que as funções de seta sejam escritas com ou sem corpo explícito dependendo da necessidade
+    "no-param-reassign": ["error", { "props": true }] // Impede a reatribuição de parâmetros de funções
+  }
+}

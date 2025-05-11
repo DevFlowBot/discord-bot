@@ -2,6 +2,7 @@ const { glob } = require('glob');
 const { REST, Routes } = require('discord.js');
 require('dotenv').config();
 
+// eslint-disable-next-line no-undef
 const token = process.env.TOKEN;
 
 module.exports = async (client) => {
