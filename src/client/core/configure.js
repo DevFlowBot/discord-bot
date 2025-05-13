@@ -1,6 +1,6 @@
 const { loadHandlers, loadModules } = require('../../utils');
-const configureAtributes = require('./config/atributes');
-const checkAllConnections = require('./startup');
+const { configureAtributes } = require('./config/atributes');
+const { checkAllConnections } = require('./startup');
 
 const configureClient = async (client) => {
   loadModules();
@@ -10,4 +10,4 @@ const configureClient = async (client) => {
   await checkAllConnections(client);
 };
 
-module.exports = configureClient;
+module.exports = { configureClient };

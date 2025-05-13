@@ -1,8 +1,8 @@
 const boxen = require('boxen');
 const chalk = require('chalk');
 
-const { checkDatabase } = require('./diagnostics/checkDatabase');
-const { checkClient } = require('./diagnostics/checkClient');
+const { checkClient, checkDatabase } = require('./diagnostics');
+const { log } = require('@common/utils/logger');
 
 const checkAllConnections = async (client) => {
   console.log(
@@ -22,20 +22,12 @@ const checkAllConnections = async (client) => {
   const allSuccess = results.every(Boolean);
 
   if (allSuccess) {
-    console.log(
-      chalk.bold.magentaBright(
-        '\n🚀 Conexões prontas! Servidor iniciado com sucesso.\n'
-      )
-    );
+    log.success('Conexões prontas! Servidor iniciado com sucesso.\n');
   } else {
-    console.log(
-      chalk.red(
-        '\n❌ Uma ou mais conexões falharam. Verifique e tente novamente.\n'
-      )
-    );
+    log.error('Uma ou mais conexões falharam. Verifique e tente novamente.\n');
     // eslint-disable-next-line no-undef
     process.exit(1);
   }
 };
 
-module.exports = checkAllConnections;
+module.exports = { checkAllConnections };

@@ -1,5 +1,5 @@
-const intents = require('./config/intents');
-const configureClient = require('./configure');
+const { intents } = require('./config/intents');
+const { configureClient } = require('./configure');
 
 module.exports = {
   intents,

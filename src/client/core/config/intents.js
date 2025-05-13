@@ -18,4 +18,4 @@ const intents = [
   GatewayIntentBits.GuildPresences,
 ];
 
-module.exports = intents;
+module.exports = { intents };

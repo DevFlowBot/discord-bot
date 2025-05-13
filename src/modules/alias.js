@@ -11,6 +11,4 @@ alias.addAlias('@database', databasePath);
 alias.addAlias('@package', packagePath);
 alias.addAlias('@locales', localesPath);
 
-console.log(databasePath);
-
 module.exports = alias;

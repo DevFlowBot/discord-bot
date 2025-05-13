@@ -1,4 +1,4 @@
-const { logConnection } = require('@common/utils');
+const { logConnection } = require('@common/utils/logger');
 require('dotenv').config();
 
 const task = async (client) => {
@@ -6,12 +6,11 @@ const task = async (client) => {
 };
 
 const checkClient = async (client) => {
-  const message = '🔄 Testando conexão com o cliente do Discord';
-  const successMessage = 'Conectado ao Discord';
-  const failMessage = 'Falha ao Conectar ao Discord';
-
-  return logConnection(message, successMessage, failMessage, () =>
-    task(client)
+  return logConnection(
+    'Testando conexão com o cliente do Discord',
+    'Conectado ao Discord',
+    'Falha ao conectar ao Discord',
+    () => task(client)
   );
 };
 

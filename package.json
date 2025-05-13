@@ -2,7 +2,7 @@
   "name": "git-discord",
   "version": "1.0.0",
   "description": "Integração discord",
-  "main": "src/client/index.js",
+  "main": "src/main.js",
   "scripts": {
     "prettier:check": "prettier --check .",
     "prettier:fix": "prettier --write .",

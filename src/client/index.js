@@ -2,7 +2,6 @@
 const { Client } = require('discord.js');
 const chalk = require('chalk');
 require('dotenv').config();
-require('../modules/alias');
 
 const { configureClient, intents } = require('./core');
 

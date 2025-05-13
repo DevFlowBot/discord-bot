@@ -1,7 +1,6 @@
 const { Collection } = require('discord.js');
 
-const i18n = require('../../../modules/i18n');
-const { db } = require('./database');
+const { db, i18n } = require('@common/modules');
 
 function configureAtributes(client) {
   client.commands = new Collection();
@@ -12,4 +11,4 @@ function configureAtributes(client) {
   client.db = db;
 }
 
-module.exports = configureAtributes;
+module.exports = { configureAtributes };

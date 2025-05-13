@@ -1,4 +1,4 @@
-const { logConnection } = require('@common/utils');
+const { logConnection } = require('@common/utils/logger');
 
 const task = async (client) => {
   const result = await client.db.raw('SELECT 1');
@@ -6,12 +6,11 @@ const task = async (client) => {
 };
 
 const checkDatabase = async (client) => {
-  const message = '🔄 Testando conexão com o Banco de dados';
-  const successMessage = 'Conectado ao Banco de dados';
-  const failMessage = 'Falha ao conectar ao Banco de dados';
-
-  return logConnection(message, successMessage, failMessage, () =>
-    task(client)
+  return logConnection(
+    'Testando conexão com o Banco de dados',
+    'Conectado ao Banco de dados',
+    'Falha ao conectar ao Banco de dados',
+    () => task(client)
   );
 };
 
