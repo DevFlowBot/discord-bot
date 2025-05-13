@@ -1,4 +1,4 @@
-const { loadHandlers, loadModules } = require('../../utils');
+const { loadHandlers, loadModules } = require('@common/utils');
 const { configureAtributes } = require('./config/atributes');
 const { checkAllConnections } = require('./startup');
 

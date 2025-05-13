@@ -14,17 +14,18 @@ const checkAllConnections = async (client) => {
     })
   );
 
-  const results = await Promise.all([
-    checkDatabase(client),
-    checkClient(client),
-  ]);
-
-  const allSuccess = results.every(Boolean);
-
-  if (allSuccess) {
-    log.success('Conexões prontas! Servidor iniciado com sucesso.\n');
-  } else {
-    log.error('Uma ou mais conexões falharam. Verifique e tente novamente.\n');
+  try {
+    const start = Date.now();
+    await Promise.all([checkDatabase(client), checkClient(client)]);
+    const duration = Date.now() - start;
+    log.success(
+      `Conexões prontas! Servidor iniciado com sucesso. (${duration}ms)\n`
+    );
+  } catch (err) {
+    log.error(
+      'Uma ou mais conexões falharam. Verifique e tente novamente.\nError:',
+      err.message
+    );
     // eslint-disable-next-line no-undef
     process.exit(1);
   }

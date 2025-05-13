@@ -18,4 +18,6 @@ const startClient = async () => {
   }
 };
 
-startClient();
+module.exports = {
+  startClient,
+};
