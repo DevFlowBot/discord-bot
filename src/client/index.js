@@ -1,43 +1,22 @@
-const { Client, GatewayIntentBits } = require('discord.js');
+/* eslint-disable no-undef */
+const { Client } = require('discord.js');
+const chalk = require('chalk');
 require('dotenv').config();
+require('../modules/alias');
 
-const { loadHandlers, loadModules } = require('../_partials');
-const configureAtributes = require('./atributes');
-const checkAllConnections = require('../startup');
-
-// eslint-disable-next-line no-undef
-const token = process.env.TOKEN;
+const { configureClient, intents } = require('./core');
 
 const startClient = async () => {
-  await checkAllConnections();
-
-  const intents = [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMembers,
-    GatewayIntentBits.AutoModerationConfiguration,
-    GatewayIntentBits.AutoModerationExecution,
-    GatewayIntentBits.DirectMessageReactions,
-    GatewayIntentBits.DirectMessages,
-    GatewayIntentBits.GuildIntegrations,
-    GatewayIntentBits.GuildMessageTyping,
-    GatewayIntentBits.GuildMessageReactions,
-    GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.GuildVoiceStates,
-    GatewayIntentBits.GuildModeration,
-    GatewayIntentBits.GuildWebhooks,
-    GatewayIntentBits.MessageContent,
-    GatewayIntentBits.GuildPresences,
-  ];
-
   const client = new Client({ intents });
+  const token = process.env.TOKEN;
 
-  loadHandlers(client);
-  loadModules();
-  configureAtributes(client);
-
-  client.login(token).catch((err) => {
-    console.error('Erro ao logar no cliente Discord:', err);
-  });
+  try {
+    await configureClient(client);
+    await client.login(token);
+  } catch (err) {
+    console.error(chalk.red('Erro ao logar no cliente Discord:'), err);
+    process.exit(1);
+  }
 };
 
 startClient();

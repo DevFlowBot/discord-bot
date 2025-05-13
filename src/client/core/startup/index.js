@@ -1,10 +1,10 @@
 const boxen = require('boxen');
 const chalk = require('chalk');
 
-const { checkDatabase } = require('./connections/checkDatabase');
-const { checkClient } = require('./connections/checkClient');
+const { checkDatabase } = require('./diagnostics/checkDatabase');
+const { checkClient } = require('./diagnostics/checkClient');
 
-const checkAllConnections = async () => {
+const checkAllConnections = async (client) => {
   console.log(
     boxen(chalk.bold.cyan('🔄 Testando conexões...'), {
       padding: 1,
@@ -14,7 +14,10 @@ const checkAllConnections = async () => {
     })
   );
 
-  const results = await Promise.all([checkDatabase(), checkClient()]);
+  const results = await Promise.all([
+    checkDatabase(client),
+    checkClient(client),
+  ]);
 
   const allSuccess = results.every(Boolean);
 

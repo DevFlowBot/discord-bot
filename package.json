@@ -6,16 +6,20 @@
   "scripts": {
     "prettier:check": "prettier --check .",
     "prettier:fix": "prettier --write .",
-    "test": "node test/index.js",
     "lint:check": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "format:check": "npm-run-all lint:check prettier:check",
     "format": "npm-run-all lint:fix prettier:fix",
     "dev": "nodemon",
     "prepare": "husky install",
-    "check-before-commit": "lint-staged && yarn test",
-    "commit": "node src/scripts/check-staged.js && yarn check-before-commit && gitmoji -c",
+    "check-files-staged": "node src/scripts/check-staged.js",
+    "commit": "yarn check-files-staged && lint-staged && gitmoji -c",
     "lint-staged": "lint-staged"
+  },
+  "_moduleAliases": {
+    "@common": "src",
+    "@database": "database",
+    "@package": "package"
   },
   "lint-staged": {
     "*.js": [

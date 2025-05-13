@@ -1,6 +1,6 @@
 const { Collection } = require('discord.js');
 
-const i18n = require('../modules/i18n');
+const i18n = require('../../../modules/i18n');
 const { db } = require('./database');
 
 function configureAtributes(client) {
