@@ -1,6 +1,6 @@
 const i18next = require('i18next');
 
-const { br, en } = require('../locales/index');
+const { br, en } = require('@locales/index');
 
 i18next.init({
   resources: {
